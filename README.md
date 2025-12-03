@@ -1,81 +1,161 @@
-# Smart Email Assistant (Lightweight)
+# Smart Email Assistant (Python Automation Project)
 
-A small, dependency-free Python utility that demonstrates email summarization, task extraction, meeting parsing, and draft reply generation. Designed as a resume-friendly project: pure Python, automation-focused, and easy to extend.
+A lightweight, dependency-free Python automation tool that analyzes raw email text and produces:
+- A short summary  
+- A list of actionable tasks  
+- Meeting/date/time detection  
+- A clean, professional draft reply  
 
-## Features
-- Summarize long emails into 1-3 sentences using a frequency-based summarizer.
-- Extract actionable tasks using heuristic rules and keywords.
-- Detect simple meeting/date/time mentions using regex heuristics.
-- Generate a polite draft reply combining summary, tasks, and scheduling notes.
+This project demonstrates **Python scripting, data parsing, automation logic, and modular pipeline design** — all without external ML libraries.
+
+---
+
+## 🚀 Features
+
+### ✔ Email Summarization  
+Extracts the most important sentences using a frequency-based algorithm.
+
+### ✔ Task Extraction  
+Uses keyword heuristics + regex to identify actionable items (e.g., *review, update, share, schedule…*).
+
+### ✔ Meeting & Schedule Detection  
+Captures dates, times, weekdays, and relative mentions like *tomorrow*, *next week*, etc.
+
+### ✔ Draft Reply Generation  
+Automatically creates a structured professional response based on extracted insights.
+
+---
+
+## 🗂 Folder Structure
+
 
 ## Structure
 ```
 smart-email-assistant/
-├── main.py                 # CLI entrypoint
+│
+├── main.py # CLI entrypoint
 ├── utils/
-│   ├── summarizer.py
-│   ├── task_extractor.py
-│   ├── meeting_parser.py
-│   └── reply_generator.py
+│ ├── summarizer.py
+│ ├── task_extractor.py
+│ ├── meeting_parser.py
+│ └── reply_generator.py
+│
 ├── samples/
-│   ├── email1.txt
-│   └── email2.txt
-└── README.md
+│ ├── email1.txt
+│ └── email2.txt
+│
+├── tests/
+│ └── test_run.py # Basic pytest for CLI testing
+│
+├── requirements.txt
+├── .gitignore
+├── .pre-commit-config.yaml
+└── .github/workflows/python-app.yml
 ```
+---
 
-## How to run
+## 🧪 Example Usage
 ```bash
 # from project root
 python3 main.py --file samples/email1.txt
 # or
 python3 main.py --file samples/email2.txt
 # or pass text directly
-python3 main.py --text "Paste email content here..."
+python main.py --text "Hi, can you update the report and schedule a meeting for Monday 3 PM?"
+
 ```
+---
 
 ## Example output
-Summary, extracted tasks, meeting mentions, and a draft reply will be printed to the console.
+===== SUMMARY =====
+Please review the attached report and share updated numbers.
 
-## Why this is resume-friendly
-- Pure Python (no heavy ML libraries).
-- Shows automation, data parsing, and pipeline orchestration.
-- Easy to explain in interviews: focus on rules, heuristics, and modularity.
+===== TASKS =====
+1. Review the attached report
+2. Share updated numbers
+3. Schedule a call
 
-## Next steps / extensions (optional)
-- Replace summarizer with an embedding-based method (use OpenAI or local models).
-- Add named-entity recognition for more robust meeting parsing.
-- Create a simple web UI or CLI flags to export CSV of tasks.
-- Add unit tests and CI workflow for the repo.
+===== MEETINGS =====
+- tuesday
+- 10:30 am
+
+===== DRAFT REPLY =====
+Hi,
+
+Thanks for the update. In brief:
+<summary>
+
+I will work on the following items:
+1. Review the attached report
+2. Share updated numbers
+3. Schedule a call
+
+Regarding scheduling, I see the following mentions:
+- Tuesday
+- 10:30 am
+
+Please let me know if I should prioritize anything specific.
+Thanks,  
+Rishi
 
 ---
-Generated for Rishi Bakliwal (resume project).
 
-## Push-ready GitHub Setup
+## ⚙️ Installation & Setup
 
-This repository is ready to push to GitHub. It includes:
-- `requirements.txt` (dev tools included)
-- `black` and `flake8` for linting
-- `pytest` for running basic tests
-- GitHub Actions workflow to run lint + tests on push/pull_request
-
-### How to push
 ```bash
-git init
-git add .
-git commit -m "Initial: Smart Email Assistant - push-ready"
-git branch -M main
-# create a repo on GitHub, then:
-git remote add origin <GITHUB_REPO_URL>
-git push -u origin main
-```
-
-### Run CI locally (example)
-```bash
+git clone https://github.com/YOUR_USERNAME/smart-email-assistant.git
+cd smart-email-assistant
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-black --check .
-flake8
+```
+## 🧩 Run Tests
+
+```bash
 pytest -q
 ```
 
+---
+
+## 🔄 GitHub Actions CI
+
+- This repository includes a CI workflow that automatically runs:
+- Black formatting check
+- Flake8 linting
+- Pytest on sample inputs
+
+Located at:
+```bash
+.github/workflows/python-app.yml
+```
+
+---
+
+## 🎯 Tool Demonstrated
+
+- Clean, modular Python code
+- Automation scripts for real-world workflows
+- CLI tool development
+- Data parsing, regex, text processing
+- Baseline analytics logic
+- CI pipelines & testing
+
+---
+
+## 📌 Future Improvements
+
+- Smarter NLP with spaCy or transformers
+- Better date/time normalization
+- Web UI dashboard
+- Export tasks to CSV or Notion
+- Ability to process full email threads
+
+---
+
+## 👨‍💻 Author
+
+- Rishi Bakliwal
+- B.Tech IT, Manipal University Jaipur
+- GitHub: [Rishi Bakliwal](https://github.com/TechTitanR/)
+
+---
