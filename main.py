@@ -19,9 +19,11 @@ from utils.task_extractor import extract_tasks
 from utils.meeting_parser import parse_meetings
 from utils.reply_generator import generate_reply
 
+
 def read_file(path):
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(path, "r", encoding="utf-8") as f:
         return f.read()
+
 
 def run(text):
     summary = summarize_text(text, num_sentences=3)
@@ -30,10 +32,13 @@ def run(text):
     reply = generate_reply(summary, tasks, meetings)
     return dict(summary=summary, tasks=tasks, meetings=meetings, reply=reply)
 
+
 def main():
-    parser = argparse.ArgumentParser(description='Smart Email Assistant (simple offline)')
-    parser.add_argument('--file', '-f', help='Path to email text file')
-    parser.add_argument('--text', '-t', help='Email text directly as argument')
+    parser = argparse.ArgumentParser(
+        description="Smart Email Assistant (simple offline)"
+    )
+    parser.add_argument("--file", "-f", help="Path to email text file")
+    parser.add_argument("--text", "-t", help="Email text directly as argument")
     args = parser.parse_args()
     if args.file:
         if not os.path.exists(args.file):
@@ -43,26 +48,29 @@ def main():
     elif args.text:
         text = args.text
     else:
-        print("Please provide --file or --text. Example: python3 main.py --file samples/email1.txt")
+        print(
+            "Please provide --file or --text. Example: python3 main.py --file samples/email1.txt"
+        )
         return 1
 
     out = run(text)
     print("\n===== SUMMARY =====\n")
-    print(out['summary'])
+    print(out["summary"])
     print("\n===== TASKS =====\n")
-    if out['tasks']:
-        for i,t in enumerate(out['tasks'],1):
+    if out["tasks"]:
+        for i, t in enumerate(out["tasks"], 1):
             print(f"{i}. {t}")
     else:
         print("No explicit tasks detected.")
     print("\n===== MEETINGS =====\n")
-    if out['meetings']:
-        for m in out['meetings']:
+    if out["meetings"]:
+        for m in out["meetings"]:
             print(f"- {m}")
     else:
         print("No meeting/date/time mentions detected.")
     print("\n===== DRAFT REPLY =====\n")
-    print(out['reply'])
+    print(out["reply"])
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

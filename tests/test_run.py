@@ -1,4 +1,6 @@
 import subprocess, sys, os
+
+
 def test_sample_run():
     # run the main script with sample email and check exit code 0
     script = os.path.join(os.path.dirname(__file__), "..", "main.py")
