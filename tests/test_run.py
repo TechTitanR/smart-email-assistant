@@ -1,4 +1,6 @@
-import subprocess, sys, os
+import subprocess
+import sys
+import os
 
 
 def test_sample_run():

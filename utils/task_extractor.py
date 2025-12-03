@@ -30,22 +30,23 @@ ACTION_KEYWORDS = [
 def extract_tasks(text):
     tasks = []
     for line in text.splitlines():
-        l = line.strip()
-        if not l:
+        line = line.strip()
+        if not line:
             continue
-        if re.match(r"^(\-|\*|\d+\.)\s+", l):
-            tasks.append(l.lstrip("-*0123456789. ").strip())
+        if re.match(r"^(\-|\*|\d+\.)\s+", line):
+            tasks.append(line.lstrip("-*0123456789. ").strip())
             continue
-        low = l.lower()
+        low = line.lower()
         for kw in ACTION_KEYWORDS:
             if kw in low:
                 idx = low.find(kw)
-                candidate = l[idx:].strip()
+                candidate = line[idx:].strip()
                 candidate = candidate.lstrip(",:;")
                 if "," in candidate:
                     candidate = candidate.split(",")[0].strip()
                 tasks.append(candidate.capitalize())
                 break
+    # remove duplicates while preserving order
     seen = set()
     final = []
     for t in tasks:

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Smart Email Assistant - simple, offline Python utility
+"""
+Smart Email Assistant - simple, offline Python utility
+
 Features:
 - Summarize an email (extract top sentences)
 - Extract actionable tasks (heuristic + regex)
@@ -7,13 +9,14 @@ Features:
 - Generate a polite draft reply using templates
 
 Usage:
-    python3 main.py samples/email1.txt
-    python3 main.py --file samples/email2.txt
+    python3 main.py --file samples/email1.txt
     python3 main.py --text "Paste email text here..."
 
 This tool is intentionally lightweight and dependency-free.
 """
-import sys, argparse, os
+import argparse
+import os
+
 from utils.summarizer import summarize_text
 from utils.task_extractor import extract_tasks
 from utils.meeting_parser import parse_meetings
@@ -21,8 +24,8 @@ from utils.reply_generator import generate_reply
 
 
 def read_file(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return f.read()
+    with open(path, "r", encoding="utf-8") as fh:
+        return fh.read()
 
 
 def run(text):
@@ -49,7 +52,8 @@ def main():
         text = args.text
     else:
         print(
-            "Please provide --file or --text. Example: python3 main.py --file samples/email1.txt"
+            "Please provide --file or --text. Example: "
+            "python3 main.py --file samples/email1.txt"
         )
         return 1
 
@@ -70,7 +74,8 @@ def main():
         print("No meeting/date/time mentions detected.")
     print("\n===== DRAFT REPLY =====\n")
     print(out["reply"])
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

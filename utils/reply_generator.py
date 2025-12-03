@@ -21,7 +21,8 @@ def generate_reply(summary, tasks, meetings):
             lines.append(f"- {m}")
         lines.append("")
     lines.append(
-        "Please let me know if I should prioritize any specific item or if there are any deadlines."
+        "Please let me know if I should prioritize any specific item "
+        "or if there are any deadlines."
     )
     lines.append("Thanks,")
     lines.append("Rishi")
