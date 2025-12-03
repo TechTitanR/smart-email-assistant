@@ -1,0 +1,11 @@
+Hello team,
+
+Please find below the tasks for this sprint:
+1. Update the ETL pipeline to handle missing values.
+2. Run the backfill for last 30 days and share the results.
+3. Prepare a short summary of findings for the stakeholders.
+
+Also, confirm your availability for a meeting on 12 Sept at 3:00 PM.
+
+Regards,
+PM
